@@ -1,0 +1,418 @@
+@charset "UTF-8";
+
+/*header*/
+
+header .site-logo {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  color: white;
+  mix-blend-mode: difference;
+  z-index: 100;
+}
+/*nav-area最初は非表示*/
+.nav-area {
+  display: block;
+  position: fixed;
+  top: 0;/*カスタム*/
+  left: -300px; /*widthと同じサイズで非表示*/
+  bottom: 0;/*カスタム*/
+  width: 300px; /*nav-areaの幅*/
+  background: black;
+  transition: all .5s;/*表示スピード*/
+  z-index: 100;
+  opacity: 0;
+}
+.nav-area-wrap {
+  padding: 80px;
+}
+.nav-area h3 {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.nav-area li {
+  padding: 12px;
+}
+.nav-area a {
+  color: white;
+}
+.nav-area .other {
+  margin-top: 80px;
+}
+/*nav-area表示時*/
+.open.nav-area {
+  left: 0;/*left-300からleft0でnav-area表示*/
+  opacity: 1;
+}
+/*nav-button*/
+.nav-btn {
+  display: block;
+  position: fixed;
+  top: 25px;/*カスタム*/
+  right: 45px;/*カスタム*/
+  width: 30px;
+  height: 30px;
+  transition: all .5s;
+  cursor: pointer;
+  z-index: 90;
+  mix-blend-mode: difference;
+
+}
+.nav-btn i{
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: white;
+  border-radius: 4px;
+  transition: all .5s;
+}
+.nav-btn i:nth-child(1) {
+  top:4px;
+}
+.nav-btn i:nth-child(2) {
+  top: 14px;
+}
+.nav-btn i:nth-child(3) {
+  bottom: 4px;
+}
+/*nav-area表示時*/
+.open.nav-btn i:nth-child(1) {
+  transform: translateY(10px) rotate(-45deg);/*回転アニメは-315deg*/
+}
+.open.nav-btn i:nth-child(2) {
+  opacity: 0;
+}
+.open.nav-btn i:nth-child(3) {
+  transform: translateY(-10px) rotate(45deg);/*回転アニメは315deg*/
+}
+/*mask*/
+.mask {
+  display: none;
+  transition: all .5s;
+}
+.open.mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: gray;
+  opacity: .8;
+  z-index: 80;
+  cursor: pointer;
+}
+
+/* mainvisual */
+
+.mainvisual {
+  width: 100%;
+  height: 92vh;
+  background: url(../img/index_mainvisual.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+  position: relative;
+}
+.mainvisual-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+.mainvisual-text h1 {
+  font-size: 3rem;
+  white-space: nowrap;
+}
+.mainvisual-text a {
+  display: inline-block;
+  padding: 10px 30px;
+  background: transparent;
+  border: solid 1px black;
+  margin: 20px;
+  font-size: 1rem;
+  color: black
+}
+
+/*scroll矢印*/
+
+.scrolldown4 {
+  /*描画位置※位置は適宜調整してください*/
+  position: absolute;
+  bottom: 1%;
+  right: 50%;
+  /*矢印の動き1秒かけて永遠にループ*/
+  animation: arrowmove 1s ease-in-out infinite;
+}
+
+/*下からの距離が変化して全体が下→上→下に動く*/
+@keyframes arrowmove {
+  0% {
+    bottom: 10%;
+  }
+
+  50% {
+    bottom: 13%;
+  }
+
+  100% {
+    bottom: 10%;
+  }
+}
+
+/*Scrollテキストの描写*/
+.scrolldown4 span {
+  /*描画位置*/
+  position: absolute;
+  left: -20px;
+  bottom: 10px;
+  /*テキストの形状*/
+  color: black;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  /*縦書き設定*/
+  -ms-writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+}
+
+/* 矢印の描写 */
+.scrolldown4:before {
+  content: "";
+  /*描画位置*/
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  /*矢印の形状*/
+  width: 1px;
+  height: 20px;
+  background: black;
+  transform: skewX(-31deg);
+}
+.scrolldown4:after {
+  content: "";
+  /*描画位置*/
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /*矢印の形状*/
+  width: 1px;
+  height: 50px;
+  background: black;
+}
+
+/*共通*/
+
+main {
+  background: url(../img/bg-img.jpg);
+  margin-top: -500px;
+}
+.break-top {
+  height: 800px;
+}
+.break {
+  height: 500px;
+}
+.bg {
+  height: 500px;
+  width: 100%;
+}
+.wrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.flex-area {
+  display: flex;
+  justify-content: center;
+}
+.section-title,
+.section-text {
+  color: black;
+  width: 50%;
+}
+.section-title h2 {
+  margin-left: 20px;
+  font-size: clamp(7rem, 12vw, 9rem);
+  font-family: 'Impact', sans-serif;
+  font-family: 'Impacted', sans-serif;
+}
+.section-text {
+  text-align: center;
+}
+.section-text p {
+  margin: 100px 0 70px 0;
+}
+.section-text a {
+  display: inline-block;
+  padding: 10px 80px;
+  background: black;
+  margin: 15px;
+  font-size: 1.2rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+
+  transition: all .5s;
+}
+.section-text a:hover {
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+  background: white;
+  color: black;
+}
+
+/*inview*/
+
+.fadein {
+  opacity: 0;
+  transform: translate(0, 50%);
+  transition: all .5s;
+}
+.fadein.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/*NIKE*/
+
+.bg.nike {
+  background: #ff0000;
+}
+.nike-img img {
+  position: absolute;
+  width: 40%;
+  top: 50px;
+  left: 100px;
+}
+.nike a {
+  color: #ff0000;
+}
+
+/*adidas*/
+
+.bg.adidas {
+  background: #ae1c87;
+}
+.adidas .section-title {
+  text-align: center;
+  color: white;
+}
+.adidas .section-text p {
+  color: white;
+}
+.adidas-img img {
+  position: absolute;
+  width: 40%;
+  right: 50px;
+  top: 100px;
+}
+.adidas a {
+  color: white;
+}
+
+/*puma*/
+
+.bg.puma {
+  background: #f3ec24;
+}
+.puma-img img {
+  position: absolute;
+  width: 40%;
+  top: 100px;
+  left: 0;
+}
+.puma a {
+  color: #f0e90a;
+}
+
+/*paint-img*/
+
+.paint-1 img,
+.paint-2 img,
+.paint-3 img,
+.paint-4 img,
+.paint-5 img {
+  width: 35%;
+}
+.paint-1 {
+  padding-top: 400px;
+}
+.paint-3 {
+  padding-top: 80px;
+}
+.paint-2,
+.paint-4 {
+  text-align: right;
+}
+
+@media (max-width:767px) {
+
+  .bg {
+    height: auto;
+  }
+  .flex-area {
+    flex-direction: column;
+  }
+  .section-title,
+  .section-text {
+    width: 80%;
+  }
+  h2 {
+    margin-left: 20px;
+  }
+  .section-text {
+    margin: 0 auto;
+  }
+  .section-text p {
+    margin: 0;
+  }
+  .section-text a {
+    margin-bottom: 50px;
+  }
+  .break {
+    height: 300px;
+  }
+  .nike-img img {
+    width: 50%;
+    top: -250px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .nike .section-text {
+    margin-top: 300px;
+  }
+  .adidas .section-title {
+    text-align: left;
+  }
+  .adidas-img img {
+    width: 50%;
+    top: -250px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .adidas .section-text {
+    margin-top: 300px;
+  }
+  .adidas .flex-area {
+    flex-direction: column-reverse;
+  }
+  .puma-img img {
+    width: 50%;
+    top: -250px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .puma .section-text {
+    margin-top: 300px;
+  }
+  .paint-1 img,
+  .paint-2 img,
+  .paint-3 img,
+  .paint-4 img,
+  .paint-5 img {
+    width: 50%;
+}
+}

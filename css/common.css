@@ -1,0 +1,87 @@
+@charset "UTF-8";
+
+/* fontfamily、footerのCSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+
+/* footer */
+
+footer {
+  width: 100%;
+  background: rgb(63, 63, 63);
+}
+footer .flex {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+footer .left,
+footer .center,
+footer .right {
+  width: 33%;
+}
+footer h3 {
+  font-size: 2rem;
+}
+footer h3 a {
+  color: white;
+}
+.sns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sns img {
+  width: 32px;
+}
+.sns li {
+  margin: 10px;
+}
+footer .center a,
+footer .center li,
+footer .right li,
+footer .right a {
+  padding: 16px;
+  color: white;
+  font-size: 1rem;
+}
+
+@media (max-width: 767px) {
+
+  footer .flex {
+    flex-direction: column;
+    height: auto;
+    white-space: nowrap;
+  }
+  footer .left,
+  footer .center,
+  footer .right {
+    width: 100%;
+  }
+  footer .left {
+    font-size: 2.5rem;
+    padding: 50px 0;
+  }
+}
